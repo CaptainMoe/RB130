@@ -98,10 +98,11 @@ class TodoList
   end
 
   def each
-    @todos.each do |todo|
-      yield(todo)
+    if block_given?
+      @todos.each do |todo|
+        yield(todo)
+      end
     end
-
     self
   end
 
@@ -115,7 +116,6 @@ class TodoList
   end
 
   def find_by_title(title)
-    binding.pry
     r = select do |todo|
       todo.title == title
     end
@@ -149,7 +149,7 @@ class TodoList
   end
 
   def to_s
-    text = "----#{title}----\n"
+    text = "---- #{title} ----\n"
     text << @todos.map(&:to_s).join("\n")
     text
   end
