@@ -6,7 +6,7 @@ Minitest::Reporters.use!
 SimpleCov.start
 
 
-require_relative 'todoList'
+require_relative '../lib/todoList'
 
 class TodoListTest < MiniTest::Test
 
