@@ -1,0 +1,26 @@
+require 'bundler/gem_tasks'
+require "rake/testtask"
+require 'find'
+
+desc 'Say hello'
+task :hello do
+  puts "Hello there. This is the 'hello' task."
+end
+
+desc 'Run Test'
+task :test do
+  sh 'ruby ./test/todoList_test.rb'
+end
+
+desc 'Run tests'
+task :default => :test
+
+desc 'list all files'
+task :list_files do
+  Find.find('./') do |path|
+    next if path.include?('/.')
+    if File.file?(path)
+      puts path
+    end
+   end
+end
